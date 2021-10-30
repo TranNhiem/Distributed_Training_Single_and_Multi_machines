@@ -5,15 +5,15 @@
 
 ### Tensorflow 
 
-+1. Configureation and Consideration 
+1. Configureation and Consideration 
 
-+2. Preparing Dataset for Training 
+2. Preparing Dataset for Training 
 
-+3. Training Aggregate update Gradient
+3. Training Aggregate update Gradient
 
-+4. Training Loss update
+4. Training Loss update
 
-+5. Example the Training Loop for Single Machine
+5. Example the Training Loop for Single Machine
 
 ### Pytorch 
 + Update SOON
