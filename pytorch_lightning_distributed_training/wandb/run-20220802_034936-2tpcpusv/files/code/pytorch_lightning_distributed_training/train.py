@@ -35,10 +35,9 @@ def main():
     entity="tranrick",
     offline= False, #args.offline,
     group = 'testing-machine',
-    job_type ='conda envs',
-    save_dir='/data1/solo_ckpt/'
+    job_type ='conda envs'
     )
-    wandb_logger.watch(model, log="gradients", log_freq=100, )
+    wandb_logger.watch(model, log="gradients", log_freq=100, save_dir='/data1/solo_ckpt')
     # """Implementation of a configurable command line tool for pytorch-lightning."""
     # cli= LightningCLI(
     #    description="Py-Lightning Distributed multi-node training", 

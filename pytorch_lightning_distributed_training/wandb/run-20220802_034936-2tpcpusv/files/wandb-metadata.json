@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.4.0-1070-azure-x86_64-with-debian-buster-sid",
+    "python": "3.7.13",
+    "heartbeatAt": "2022-08-02T03:49:37.169055",
+    "startedAt": "2022-08-02T03:49:36.806916",
+    "docker": null,
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "gpu_count": 8,
+    "cpu_count": 96,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "pytorch_lightning_distributed_training/train.py",
+    "git": {
+        "remote": "https://github.com/TranNhiem/Distributed_Training_Single_and_Multi_machine.git",
+        "commit": "7c34b151838903ae923a0524718a7871d0218bb9"
+    },
+    "email": "tvnhiemhmus@g.ncu.edu.tw",
+    "root": "/home/harry/multi_nodes_training/Distributed_Training_Single_and_Multi_machine",
+    "host": "ai03",
+    "username": "harry",
+    "executable": "/anaconda/envs/MVQG/bin/python"
+}

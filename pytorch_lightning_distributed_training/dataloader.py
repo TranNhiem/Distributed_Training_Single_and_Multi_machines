@@ -19,7 +19,7 @@ class synthetic_imagenet_test(Dataset):
         return image, label 
 
 class ImageNetDataModule(LightningDataModule): 
-    def __init__(self, data_path: Optional[str]=None, 
+    def __init__(self, data_path: Optional[str]="/data1/1K_New/", 
                 batch_size: int =4, 
                 workers: int= 2, 
                 **kwargs, 

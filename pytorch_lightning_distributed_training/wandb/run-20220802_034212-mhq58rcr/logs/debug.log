@@ -1,0 +1,36 @@
+2022-08-02 03:42:12,370 INFO    MainThread:56843 [wandb_setup.py:_flush():76] Configure stats pid to 56843
+2022-08-02 03:42:12,370 INFO    MainThread:56843 [wandb_setup.py:_flush():76] Loading settings from /home/harry/.config/wandb/settings
+2022-08-02 03:42:12,370 INFO    MainThread:56843 [wandb_setup.py:_flush():76] Loading settings from /home/harry/multi_nodes_training/Distributed_Training_Single_and_Multi_machine/pytorch_lightning_distributed_training/wandb/settings
+2022-08-02 03:42:12,370 INFO    MainThread:56843 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'_require_service': 'True'}
+2022-08-02 03:42:12,371 INFO    MainThread:56843 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'pytorch_lightning_distributed_training/train.py', 'program': 'train.py'}
+2022-08-02 03:42:12,371 INFO    MainThread:56843 [wandb_init.py:_log_setup():461] Logging user logs to /home/harry/multi_nodes_training/Distributed_Training_Single_and_Multi_machine/pytorch_lightning_distributed_training/wandb/run-20220802_034212-mhq58rcr/logs/debug.log
+2022-08-02 03:42:12,371 INFO    MainThread:56843 [wandb_init.py:_log_setup():462] Logging internal logs to /home/harry/multi_nodes_training/Distributed_Training_Single_and_Multi_machine/pytorch_lightning_distributed_training/wandb/run-20220802_034212-mhq58rcr/logs/debug-internal.log
+2022-08-02 03:42:12,371 INFO    MainThread:56843 [wandb_init.py:init():495] calling init triggers
+2022-08-02 03:42:12,371 INFO    MainThread:56843 [wandb_init.py:init():499] wandb.init called with sweep_config: {}
+config: {}
+2022-08-02 03:42:12,371 INFO    MainThread:56843 [wandb_init.py:init():548] starting backend
+2022-08-02 03:42:12,371 INFO    MainThread:56843 [wandb_init.py:init():552] setting up manager
+2022-08-02 03:42:12,375 INFO    MainThread:56843 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-08-02 03:42:12,378 INFO    MainThread:56843 [wandb_init.py:init():558] backend started and connected
+2022-08-02 03:42:12,380 INFO    MainThread:56843 [wandb_init.py:init():634] updated telemetry
+2022-08-02 03:42:12,393 INFO    MainThread:56843 [wandb_init.py:init():666] communicating run to backend with 30 second timeout
+2022-08-02 03:42:15,418 WARNING MsgRouterThr:56843 [router.py:message_loop():76] message_loop has been closed
+2022-08-02 03:42:28,678 WARNING MainThread:56843 [wandb_init.py:init():1064] interrupted
+Traceback (most recent call last):
+  File "/anaconda/envs/MVQG/lib/python3.7/site-packages/wandb/sdk/wandb_init.py", line 1043, in init
+    run = wi.init()
+  File "/anaconda/envs/MVQG/lib/python3.7/site-packages/wandb/sdk/wandb_init.py", line 669, in init
+    run, timeout=self.settings.init_timeout
+  File "/anaconda/envs/MVQG/lib/python3.7/site-packages/wandb/sdk/interface/interface.py", line 223, in communicate_run
+    return self._communicate_run(run, timeout=timeout)
+  File "/anaconda/envs/MVQG/lib/python3.7/site-packages/wandb/sdk/interface/interface_shared.py", line 324, in _communicate_run
+    resp = self._communicate(req, timeout=timeout)
+  File "/anaconda/envs/MVQG/lib/python3.7/site-packages/wandb/sdk/interface/interface_shared.py", line 226, in _communicate
+    return self._communicate_async(rec, local=local).get(timeout=timeout)
+  File "/anaconda/envs/MVQG/lib/python3.7/site-packages/wandb/sdk/interface/router.py", line 37, in get
+    is_set = self._object_ready.wait(timeout)
+  File "/anaconda/envs/MVQG/lib/python3.7/threading.py", line 552, in wait
+    signaled = self._cond.wait(timeout)
+  File "/anaconda/envs/MVQG/lib/python3.7/threading.py", line 300, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
