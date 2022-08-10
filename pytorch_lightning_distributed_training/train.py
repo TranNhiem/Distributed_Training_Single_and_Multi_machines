@@ -17,7 +17,9 @@ Here is an example how to run on two nodes, 2 GPUs each:
     MASTER_ADDR=node02.cluster MASTER_PORT=1234 NODE_RANK=1 python train.py --trainer.gpus 2 --trainer.num_nodes 2 \
         --data.data-path ...
 """
+#10.0.0.6 -> .37 VM, 10.0.0.9 -> .203 VM , 10.0.0.8 -> .227 VM
 
+#NCCL_IB_DISABLE=1 MASTER_ADDR=10.0.0.9 MASTER_PORT=1234 WORLD_SIZE=2 NODE_RANK=2 python train.py
 from dataloader import ImageNetDataModule
 from model import ImageNetLightningModel 
 #https://pytorch-lightning.readthedocs.io/en/stable/_modules/pytorch_lightning/utilities/cli.html
@@ -51,11 +53,11 @@ def main():
     # # TODO: enable evaluate
     # cli.trainer.fit(cli.model, datamodule=cli.datamodule)
   
-    dataloader=ImageNetLightningModel()
+    dataloader=ImageNetDataModule()
     train_loader=dataloader.train_dataloader
     val_loader=dataloader.val_dataloader
     # cli.trainer.fit(cli.model, datamodule=cli.datamodule)
-    trainer= Trainer(strategy="ddp", max_epochs=10, gpus=2,  num_nodes=2, logger=wandb_logger)
+    trainer= Trainer( max_epochs=10, gpus=2, num_nodes=3,strategy="ddp", logger=wandb_logger)#strategy="ddp"
     trainer.fit(model, train_loader, val_loader)
 
 
