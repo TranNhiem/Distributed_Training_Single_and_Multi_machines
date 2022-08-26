@@ -2,12 +2,14 @@ import os
 import random 
 from typing import Optional 
 
-import torch 
-import torchvision.transforms as transforms 
-from torchvision.datasets import ImageFolder 
 
 from pytorch_lightning import LightningDataModule 
+
+import torchvision.transforms as transforms 
+from torchvision.datasets import ImageFolder 
 from torch.utils.data import DataLoader, Dataset 
+
+import torch 
 
 class synthetic_imagenet_test(Dataset): 
     def __len__(self): 

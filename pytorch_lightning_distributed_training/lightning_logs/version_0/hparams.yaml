@@ -1,0 +1,4 @@
+lr: 0.1
+momentum: 0.9
+pretrained: false
+weight_decay: 0.0001

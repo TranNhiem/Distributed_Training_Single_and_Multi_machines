@@ -1,9 +1,10 @@
-import torch
 from pytorch_lightning import LightningModule
 from torch.nn import functional as F
 from torch.optim import SGD
 from torch.optim.lr_scheduler import LambdaLR
 from torchvision import models as models
+
+import torch
 
 class ImageNetLightningModel(LightningModule):
     def __init__(

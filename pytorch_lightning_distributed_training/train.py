@@ -20,12 +20,11 @@ Here is an example how to run on two nodes, 2 GPUs each:
 #10.0.0.6 -> .37 VM, 10.0.0.9 -> .203 VM , 10.0.0.8 -> .227 VM
 
 #NCCL_IB_DISABLE=1 MASTER_ADDR=10.0.0.9 MASTER_PORT=1234 WORLD_SIZE=2 NODE_RANK=2 python train.py
-from dataloader import ImageNetDataModule, MNISTDataModule
-from model import ImageNetLightningModel 
 #https://pytorch-lightning.readthedocs.io/en/stable/_modules/pytorch_lightning/utilities/cli.html
-from pytorch_lightning.utilities.cli import LightningCLI
 from pytorch_lightning import Trainer, seed_everything
 
+from dataloader import ImageNetDataModule, MNISTDataModule
+from model import ImageNetLightningModel 
 #from pytorch_lightning.loggers import WandbLogger
 
 def main(): 
