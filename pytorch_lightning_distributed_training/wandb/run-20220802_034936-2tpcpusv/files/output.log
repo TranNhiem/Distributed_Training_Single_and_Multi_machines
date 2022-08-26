@@ -1,5 +1,0 @@
-Traceback (most recent call last):
-  File "train.py", line 62, in <module>
-    main()
-  File "train.py", line 40, in main
-    wandb_logger.watch(model, log="gradients", log_freq=100, save_dir='/data1/solo_ckpt')

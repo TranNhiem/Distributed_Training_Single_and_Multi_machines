@@ -20,17 +20,18 @@ Here is an example how to run on two nodes, 2 GPUs each:
 #10.0.0.6 -> .37 VM, 10.0.0.9 -> .203 VM , 10.0.0.8 -> .227 VM
 
 #NCCL_IB_DISABLE=1 MASTER_ADDR=10.0.0.9 MASTER_PORT=1234 WORLD_SIZE=2 NODE_RANK=2 python train.py
-from dataloader import ImageNetDataModule
+from dataloader import ImageNetDataModule, MNISTDataModule
 from model import ImageNetLightningModel 
 #https://pytorch-lightning.readthedocs.io/en/stable/_modules/pytorch_lightning/utilities/cli.html
 from pytorch_lightning.utilities.cli import LightningCLI
 from pytorch_lightning import Trainer, seed_everything
 
-from pytorch_lightning.loggers import WandbLogger
+#from pytorch_lightning.loggers import WandbLogger
 
 def main(): 
     seed_everything(123) 
     model = ImageNetLightningModel()
+    ''' # for testing, i disable wandb
     wandb_logger = WandbLogger(
     name='test-node1',
     project='Multi-node-training',
@@ -38,9 +39,10 @@ def main():
     offline= False, #args.offline,
     group = 'testing-machine',
     job_type ='conda envs',
-    save_dir='/data1/solo_ckpt/'
+    save_dir='/'
     )
-    wandb_logger.watch(model, log="gradients", log_freq=100, )
+    '''
+    #wandb_logger.watch(model, log="gradients", log_freq=100, )
     # """Implementation of a configurable command line tool for pytorch-lightning."""
     # cli= LightningCLI(
     #    description="Py-Lightning Distributed multi-node training", 
@@ -54,11 +56,9 @@ def main():
     # cli.trainer.fit(cli.model, datamodule=cli.datamodule)
   
     dataloader=ImageNetDataModule()
-    train_loader=dataloader.train_dataloader
-    val_loader=dataloader.val_dataloader
     # cli.trainer.fit(cli.model, datamodule=cli.datamodule)
-    trainer= Trainer( max_epochs=10, gpus=2, num_nodes=3,strategy="ddp", logger=wandb_logger)#strategy="ddp"
-    trainer.fit(model, train_loader, val_loader)
+    trainer= Trainer( max_epochs=1000, gpus=2, num_nodes=2,strategy="ddp")
+    trainer.fit(model, dataloader)  # directly feed the LightningDataModule into trainer..
 
 
 if __name__ == "__main__": 

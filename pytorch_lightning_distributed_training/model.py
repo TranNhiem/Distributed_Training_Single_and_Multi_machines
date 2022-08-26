@@ -43,22 +43,23 @@ class ImageNetLightningModel(LightningModule):
         self.log("val_loss", loss_val, on_step=True, on_epoch=True)
         self.log("val_acc1", acc1, on_step=True, prog_bar=True, on_epoch=True)
         self.log("val_acc5", acc5, on_step=True, on_epoch=True)
+    
     @staticmethod
-    def __accuracy(output, target, topk=(1,)): 
+    def __accuracy(outputs, targets, topk=(1,)): 
         """Computing top K prediction acc"""
-        with torch.no_grad(): 
-            maxk= max(topk)
-            batch_size= target.size(0)
+        with torch.no_grad():
+            maxk = max(topk)
+            batch_size = targets.size(0)
+            _, pred = outputs.topk(maxk, 1, True, True)
+            pred = pred.t()
+            correct = pred.eq(targets.view(1, -1).expand_as(pred))
+            res = []
+            for k in topk:
+                correct_k = correct[:k].contiguous().view(-1).float().sum(0, keepdim=True)
+                res.append(correct_k.mul_(100.0 / batch_size))
+        return res
 
-            _, pred= output.topk(maxk, 1, True, True)
-            pred= pred.t() 
-            correct= pred.eg(target.view(1, -1).expand_as(pred))
 
-            res=[]
-            for k in topk: 
-                correct_k= correct[:k].reshape(-1).float().sum(0, keepdim=True)
-                res.append(correct_k.mul_(100.0/ batch_size))
-            return res 
 
     def configure_optimizers(self): 
         optimizer= SGD(self.parameters(), lr=self.lr, momentum= self.momentum, 

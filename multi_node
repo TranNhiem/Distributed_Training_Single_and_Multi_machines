@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# slave node
+docker run -itd --rm --gpus '"device=2, 3"' --ipc=host --name slave -v /home/joseph/Desktop/Distributed_Training_Single_and_Multi_machine:/workspace -v /data1/1K_New:/data joseph/tchl bash
+
+# master node
+docker run -itd --rm --gpus '"device=4, 5"' --ipc=host --name master --link slave -p 2200:22 -v /home/joseph/Desktop/Distributed_Training_Single_and_Multi_machine:/workspace -v /data1/1K_New:/data joseph/tchl bash
+
+# you can add more node as you want..
+# apply docker to build the distributed training env is worthy, because 
+#  1. it easy to align the path of data folder by mount the host into docker
+#  2. it easy to setup the dev env by apply the exactly same docker image
+#  3. it easy to share to multiple machine by docker hub & docker pull
+#  4. it easy to share the code by even commit the code in the docker image (although i do not suggest that)
+#  and you life about testing & running the distributed training will,
+#      finally become peaceful.....~ To HHRI SSL-team
