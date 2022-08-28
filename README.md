@@ -1,6 +1,8 @@
 # Distributed_Training_Single_and_Multi_machine
 
-## Pass docker Local Area Network
+## Pytorch-Lightning Multi-Node training 
+
+### Testing Pass docker Local Area Network
 ### network driver of container : bridge mode
 ### network config (cat /etc/hosts)
 > master node 172.17.0.5 (container master)
@@ -24,19 +26,23 @@ At the first, ssh into the master docker with the forward port 3300
 `cat /etc/hosts` to confirm the slave node ip-addr
 `ssh root@172.17.0.3 -p 22` to ssh in slave node
 
-#### In slave container
+#### In Worker container
 `cd pytorch_lightning_distributed_training ; ./node2_bash &`
 then the distributed learning is begin !! have fun & good luck
 
 #### To keep the session in slave & master node, you can also install tmux or apply screen
 
----
+
+### Pytorch 
++ Update SOON
+
+-------------------------
+
+### Tensorflow 
 
 
 ## Distributed Training on **Single Machine** 
 
-
-### Tensorflow 
 
 1. Configureation and Consideration 
 
@@ -48,8 +54,6 @@ then the distributed learning is begin !! have fun & good luck
 
 5. Example the Training Loop for Single Machine
 
-### Pytorch 
-+ Update SOON
 
 ## Distributed Training on **Multi-Machines**
 
@@ -64,5 +68,4 @@ then the distributed learning is begin !! have fun & good luck
 4. Optimization (Communicate + Mixpercision Training)
 
 5. Training loss Update 
-
 
