@@ -17,7 +17,7 @@ Here is an example how to run on two nodes, 2 GPUs each:
     MASTER_ADDR=node02.cluster MASTER_PORT=1234 NODE_RANK=1 python train.py --trainer.gpus 2 --trainer.num_nodes 2 \
         --data.data-path ...
 """
-#10.0.0.6 -> .37 VM, 10.0.0.9 -> .203 VM , 10.0.0.8 -> .227 VM
+#10.0.0.6 -> .98 VM, 10.0.0.9 -> .203 VM , 10.0.0.8 -> .227 VM
 
 #NCCL_IB_DISABLE=1 MASTER_ADDR=10.0.0.9 MASTER_PORT=1234 WORLD_SIZE=2 NODE_RANK=2 python train.py
 #https://pytorch-lightning.readthedocs.io/en/stable/_modules/pytorch_lightning/utilities/cli.html
